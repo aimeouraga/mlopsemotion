@@ -10,17 +10,17 @@ from pydantic import BaseModel # type: ignore
 from transformers import pipeline # type: ignore
 import fitz   # type: ignore
 import pandas as pd  # type: ignore
-from dotenv import load_dotenv # type: ignore
+# from dotenv import load_dotenv # type: ignore
 import os
-load_dotenv()
+# load_dotenv()
 
-adminame = os.getenv('adminame')
-passwordadmin = os.getenv('passwordadmin')
-username = os.getenv('username')
-passworduser = os.getenv('passworduser')
+# adminame = os.getenv('adminame')
+# passwordadmin = os.getenv('passwordadmin')
+# username = os.getenv('username')
+# passworduser = os.getenv('passworduser')
 
 # JWT settings
-SECRET_KEY =os.getenv('SECRET_KEY') # Replace with your own secret key
+SECRET_KEY = "04f814f991c7117927ff18ebed47202093f0fea811324d2cee30d78df8a9cb88" # Replace with your own secret key
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
@@ -32,8 +32,8 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 # User database
 users_db = {
-    "admin": {"username": adminame, "password": pwd_context.hash(passwordadmin), "role": "admin"},
-    "user": {"username": username, "password": pwd_context.hash(passworduser), "role": "user"},
+    "admin": {"username": "admin", "password": pwd_context.hash("adminpass"), "role": "admin"},
+    "user": {"username": "user", "password": pwd_context.hash("userpass"), "role": "user"},
 }
 
 
