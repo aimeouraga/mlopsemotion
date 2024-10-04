@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://mlopsemotion.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_6fb3a4b02ced4b4bb5fe944f7a483336 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_50981b1362df430185f1050c5caaa29e }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_b3bfe933f14442bca97999f29be011a8 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_eb4d2a8e6f084299957bcaa6bcbfed94 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: mlopsemotion.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_6fb3a4b02ced4b4bb5fe944f7a483336 }}/mlopsemotion:${{ github.sha }}
+        tags: mlopsemotion.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_b3bfe933f14442bca97999f29be011a8 }}/mlopsemotion1:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'mlopsemotion'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2cd629cf50cc4e37b1aa19c6d37c6ba4 }}
-        images: 'mlopsemotion.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_6fb3a4b02ced4b4bb5fe944f7a483336 }}/mlopsemotion:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_004558fc53ae4fd6898bb5e05bc83c58 }}
+        images: 'mlopsemotion.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_b3bfe933f14442bca97999f29be011a8 }}/mlopsemotion1:${{ github.sha }}'
